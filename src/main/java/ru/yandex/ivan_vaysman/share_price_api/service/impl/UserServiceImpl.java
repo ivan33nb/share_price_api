@@ -1,11 +1,11 @@
-package ru.yandex.ivan_vaysman.share_price_api.service;
+package ru.yandex.ivan_vaysman.share_price_api.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.stereotype.Service;
 import ru.yandex.ivan_vaysman.share_price_api.domain.model.User;
 import ru.yandex.ivan_vaysman.share_price_api.repository.UserRepository;
-import ru.yandex.ivan_vaysman.share_price_api.service.impl.UserService;
+import ru.yandex.ivan_vaysman.share_price_api.service.UserService;
 
 @RequiredArgsConstructor
 @Service
