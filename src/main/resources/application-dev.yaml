@@ -6,6 +6,11 @@ spring:
   banner:
     location: none
 
+  jpa:
+    show-sql: false
+    format-sql: false
+    hibernate:
+      ddl-auto: none
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${DB_URL}
