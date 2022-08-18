@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.web.SecurityFilterChain;
-import ru.yandex.ivan_vaysman.share_price_api.service.UserServiceImpl;
+import ru.yandex.ivan_vaysman.share_price_api.service.UserService;
 
 
 @RequiredArgsConstructor
@@ -15,7 +15,7 @@ import ru.yandex.ivan_vaysman.share_price_api.service.UserServiceImpl;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
