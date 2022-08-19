@@ -3,6 +3,8 @@ package ru.yandex.ivan_vaysman.share_price_api.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import ru.yandex.ivan_vaysman.share_price_api.domain.dto.CompanyShareDTO;
+import ru.yandex.ivan_vaysman.share_price_api.domain.mapper.CompanyShareMapper;
 import ru.yandex.ivan_vaysman.share_price_api.domain.model.CompanyShare;
 import ru.yandex.ivan_vaysman.share_price_api.repository.CompanyShareRepository;
 import ru.yandex.ivan_vaysman.share_price_api.service.CompanyShareService;
@@ -14,24 +16,27 @@ import java.util.List;
 public class CompanyShareServiceImpl implements CompanyShareService {
 
     private final CompanyShareRepository repository;
+    private final CompanyShareMapper companyShareMapper = CompanyShareMapper.INSTANCE;
 
     @Override
-    public CompanyShare getBySymbol(String symbol) {
-        return repository.findById(symbol).orElse(null);
+    public CompanyShareDTO getBySymbol(String symbol) {
+        return companyShareMapper.map(repository.findById(symbol).orElse(null));
     }
 
     @Override
-    public List<CompanyShare> getAllCompanyShare() {
-        return repository.findAll();
+    public List<CompanyShareDTO> getAllCompanyShare(int page, int size) {
+        return companyShareMapper.mapList(repository.findAll(PageRequest.of(page, size)).getContent());
     }
 
     @Override
-    public List<CompanyShare> getTopFiveMostExpensiveTradingCompany() {
-        return repository.getTopFiveMostExpensiveTradingCompany(PageRequest.of(0, 5)).getContent();
+    public List<CompanyShareDTO> getTopFiveMostExpensiveTradingCompany() {
+        List<CompanyShare> content = repository.getTopFiveMostExpensiveTradingCompany(PageRequest.of(0, 5)).getContent();
+        return companyShareMapper.mapList(content);
     }
 
     @Override
-    public List<CompanyShare> getTopFiveGreatestChangePercentInStock() {
-        return repository.getTopFiveByPercentInStock(PageRequest.of(0, 5)).getContent();
+    public List<CompanyShareDTO> getTopFiveGreatestChangePercentInStock() {
+        List<CompanyShare> content = repository.getTopFiveByPercentInStock(PageRequest.of(0, 5)).getContent();
+        return companyShareMapper.mapList(content);
     }
 }
