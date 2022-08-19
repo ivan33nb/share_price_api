@@ -2,6 +2,7 @@ package ru.yandex.ivan_vaysman.share_price_api.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Setter
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "company_share")
