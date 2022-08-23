@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/auth-success")
 @RestController
-public class GreetingsController {
+public class GreetingController {
 
     @GetMapping("/hello")
     public ResponseEntity<String> hello(){
-        return ResponseEntity.ok("\t\t\tHello! Authorization passed successfully:)");
+        return ResponseEntity.ok("Hello! Authorization passed successfully:)");
     }
 }
