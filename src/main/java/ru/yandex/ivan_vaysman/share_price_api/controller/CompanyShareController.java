@@ -15,7 +15,8 @@ public class CompanyShareController {
     private final CompanyShareService companyShareService;
 
     @GetMapping()
-    public List<CompanyShareDTO> getAll(@RequestParam int page, @RequestParam int size){
+    public List<CompanyShareDTO> getAll(@RequestParam(defaultValue = "0", required = false) int page,
+                                        @RequestParam(defaultValue = "50", required = false) int size){
         return companyShareService.getAllCompanyShare(page, size);
     }
 
